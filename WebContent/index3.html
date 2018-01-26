@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>港盛财富</title>
+<meta charset="utf-8" />
+<meta name="author" content="孙新-xs06974@163.com" />
+<meta name="description" content="港盛财富" />
+<meta name="keywords" content="港盛财富" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<link rel="icon" href="/upload/images/logo.ico" type="image/x-icon" />
+<style>
+
+</style>
+</head>
+<body>
+<div id="sec1">
+	<div class="container center" >
+			
+	</div>
+</div>
+
+<div id="sec2">
+	<div class="container center">
+		
+	</div>
+</div>
+
+<div id="sec3">
+	<div class="container center">
+		
+	</div>
+</div>
+
+<div id="sec4">
+	<div class="container center">
+		
+	</div>
+</div>
+
+<div id="sec5">
+	<div class="container center">
+		
+	</div>
+</div>
+
+<div id="sec6">
+	<div class="container center">
+		
+	</div>
+</div>
+
+<div id="sec7">
+	<div class="container center">
+	
+	</div>
+</div>
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+$('#btn').click(function(){
+	var name = $('#name').val();
+	var mobile = $('#mobile').val();
+	var email = $('#email').val();
+	
+	if(name=='') {
+		alert('请输入您的姓名');
+		return;
+	}
+	
+
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入您的手机号码');
+		return;
+	}
+	
+	if(email=='') {
+		alert('请输入您的邮箱');
+		return;
+	}
+	
+	$.ajax({
+		url: 'userInfo/add',
+		type: 'post',
+		data: {'name': name, 'mobile': mobile, 'email': email},
+		success: function(){
+			alert('提交成功, 请保持手机畅通, 工作人员会联系您.')
+			$('#name').val('');
+			$('#mobile').val('');
+			$('#email').val('');
+		},
+		error: function(){
+			alert('操作失败, 请稍后重试');
+		}
+	})
+});
+
+
+$('#btnGetVerifyCode').click(function(){
+	var that = $(this);
+	var mobile = $('#mobile').val();
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入正确的手机号码');
+		return;
+	}
+	
+	$.ajax({
+		url: 'sendVerifyCode?mobile=' + mobile,
+		success: function() {
+			$(that).attr('disabled', true);
+			var count = 59;
+			var timer = setInterval(function(){
+				$(that).text(count);
+				count--;
+				if(count<=0) {
+					$(that).attr('disabled', false);
+					$(that).text('发送验证码');
+					clearInterval(timer);
+				}
+			}, 1000)
+		},
+		error: function(){
+			alert('获取验证码失败, 请稍后重试');
+		}
+	})
+});
+
+
+</script>
+<script>
+
+</script>
+</html>
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TFY FOREX</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="桂银e融" />
+<meta name="keywords" content="桂银e融" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<style>
+img{
+	width: 100%; 
+	height: auto;
+}
+
+#form{
+	background: url(upload/images/mobile/6.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 10px 50px;
+	text-align: center;
+}
+
+#form input{
+	margin: 20px 0;
+}
+.btn-yellow{
+    color: #fff;
+    background-color: #deb71c;
+    border-color: #deb71c;
+    border-radius: 0;
+}
+</style>
+</head>
+<body>
+<!--img src="upload/images/mobile/11.jpg" />
+<a href="#" title="注册虚拟账户">
+<img src="upload/images/mobile/12.jpg" />
+</a>
+
+<a href="#" title="开设真实账户">
+<img src="upload/images/mobile/13.jpg" />
+</a>
+
+<a href="#" title="下载MT4软件">
+<img src="upload/images/mobile/14.jpg" /-->
+</a>
+<a href="#form">
+<img src="upload/images/mobile/1.jpg" />
+</a>
+
+<img src="upload/images/mobile/2.jpg" />
+<a href="#" title="了解更多点查">
+<img src="upload/images/mobile/3.jpg" />
+</a>
+<img src="upload/images/mobile/4.jpg" />
+<a href="#" title="了解更多返佣">
+<img src="upload/images/mobile/5.jpg" />
+</a>
+<div id="form">
+	<h1>填写表单</h1>
+	<p>免费下载MT4软件、注册MT4平台账户</p>
+	<form id="myForm" class="form-horizontal" method="post" action="userInfo/add">
+		<input class="form-control" placeholder="姓名" name="name" id="name" />
+		<input class="form-control" placeholder="手机" name="mobile" id="mobile" />
+		<input class="form-control" placeholder="邮箱" name="email" id="email" />
+		
+		<input type="button" class="btn btn-yellow" value="立即开设账户" id="btn" />
+	</form>
+</div>
+<img src="upload/images/mobile/7.jpg" />
+<img src="upload/images/mobile/8.jpg" />
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+$('#btn').click(function(){
+	var name = $('#name').val();
+	var mobile = $('#mobile').val();
+	var email = $('#email').val();
+	
+	if(name=='') {
+		alert('请输入您的姓名');
+		return;
+	}
+	
+	if(mobile=='' || !/\d11/.test(mobile)) {
+		alert('请输入您的手机号码');
+		return;
+	}
+	
+	if(email=='') {
+		alert('请输入您的邮箱');
+		return;
+	}
+	
+	$.ajax({
+		url: 'userInfo/add',
+		type: 'post',
+		data: {'name': name, 'mobile': mobile, 'email': email},
+		success: function(){
+			alert('提交成功, 请保持手机畅通, 工作人员会联系您.');
+			$('#name').val('');
+			$('#mobile').val('');
+			$('#email').val('');
+		},
+		error: function(){
+			alert('操作失败, 请稍后重试');
+		}
+	})
+});
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62f3c3ef3b75268eb64da8b728220266";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

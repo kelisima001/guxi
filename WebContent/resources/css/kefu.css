@@ -1,0 +1,75 @@
+
+#kefu{
+	position: absolute;
+	right: 3%;
+	top: 40%;
+	height: 60%;
+	border: 1px solid #101c3c;
+	width: 25%;z-index: 999;
+	font-family: 'microsoft yahei';
+	font-size: 16px;
+	visibility:visible;
+}
+
+#kefu .kefuTop{
+	margin: 0;
+	background-color:green;
+	font-size: 20px;
+	color: white;
+	}
+#kefu .buttonX{
+	margin-right: 3%;
+	float: right;
+	background-color: 
+	green;border: 0;
+	height: 22px;
+	}
+#kefu .kefuTop{
+	background-color: green;
+	font-size: 20px;
+	color: white;
+	}
+#kefu .kefuRecord{
+	margin: 0;
+	overflow:auto;
+	height:70%;
+	background-color: white;}
+#kefu .kefuMiddle{
+	margin: 0;
+	height:7%;
+	background-color: #e8e1e1;
+	}
+#kefu .kefuInsert{
+	margin: 0;
+	height: 17%;
+	background-color: white;
+	}
+#kefu .kefuInsert .kefuTextarea{
+	background-color: white;
+	width: 77%;
+	margin: 0;
+	height: 100%;
+	border: 0;}
+#kefu .kefuInsert .kefuButton{
+	float: right;
+	height: 98%;
+	margin: 1% 1% 1% auto;
+	width: 20%;
+	border-radius: 6px;
+	background-color: #f9f9f9;
+	}
+	
+
+
+
+@keyframes mymove
+{
+from {top:40%;}
+to {top:3%;}
+}
+
+@-webkit-keyframes mymove /*Safari and Chrome*/
+{
+from {top:40%;}
+to {top:3%;}
+}

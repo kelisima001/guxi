@@ -1,0 +1,230 @@
+.container{
+	width: 1200px !important;
+	font-size: 18px;
+}
+
+.center{
+	text-align: center;
+}
+
+em{
+	font-style: normal;
+}
+#sec1{
+	height: 78px;
+	overflow: hidden;
+	line-height: 78px;
+}
+
+#sec1 .col-xs-6 a {
+	border: solid #cfcfcf 1px;
+	border-radius: 3px;
+	padding: 6px 20px;
+	color: #8b8b8b;
+	text-decoration: none;
+}
+
+#sec1 .col-xs-6 a:hover, #sec1 .col-xs-6 a:active {
+	border: solid #ff6200 1px;
+	color: #ff6200;
+}
+
+#sec2{
+	height: 579px;
+	background: url(../../upload/images/pc/tfy2/1.jpg) top center no-repeat;
+	color: #fff;
+}
+
+#sec21{
+	height: 904px;
+	overflow; hidden;
+	background: url(../../upload/images/pc/tfy2/12.jpg) top center no-repeat;
+	color: #fff;
+}
+
+
+#sec22{
+	height: 579px;
+	background: url(../../upload/images/pc/tfy2/1.jpg) top center no-repeat;
+	color: #fff;
+}
+
+.regform{
+	padding: 50px 100px 0 100px;
+	min-height: 300px;
+}
+
+.regform .inner{
+	border: solid rgba(204,204,204, 0.2) 6px;
+	border-radius: 5px;
+	
+}
+
+.regform .inner .inner1{
+	background-color: #dfe1e3;
+	min-height: 200px;
+	text-align: center;
+	padding: 30px 0 30px 0;
+}
+
+.inner1 span {
+	font-size: 19px;
+	font-weight: bold;
+	color: #333;
+}
+
+.inner1 span em{
+	color: #ff6200;
+}
+
+.formItemWrapper{
+	margin: 20px 40px;
+	border: solid #aaa 2px;
+	border-radius: 3px;
+	padding: 10px;
+	text-align: left;
+	color: #666;
+	background-color: #fff;
+	font-size: 16px; 
+}
+
+.formItemWrapper input {
+	width: 180px;
+	border: none;
+	outline: none;
+	padding-left: 20px;
+}
+
+#code{
+	padding-left: 5px;
+	width: 100px;
+}
+
+.formItemWrapper1{
+	margin: 20px 40px;
+	border: solid #aaa 2px;
+	border-radius: 3px;
+	padding: 10px;
+	text-align: center;
+	color: #fff;
+	background-color: #ff6200;
+	border: none;
+	cursor: pointer;
+}
+#sec3{
+	height: 730px;
+	overflow: hidden;
+	background: url(../../upload/images/pc/tfy2/3.jpg) bottom center no-repeat;
+	padding-top: 80px;
+	text-align: center;
+}
+
+#sec3 h1{
+	color: #000;
+}
+
+#sec3 h3{
+	color: #ff6200;
+}
+
+#sec3 .p1{
+	padding-top: 30px; 
+	line-height: 2.1em;
+}
+#sec3 .p2{
+	padding-left: 100px;
+}
+
+#sec3 .p3{
+	font-size: 14px;
+	color: #999;
+}
+#sec3 table {
+	margin: 50px 0 30px 0;
+	width: 100%;
+	font-weight: bold;
+}
+
+#sec3 table td{
+	line-height: 60px;
+	padding: 0 10px;
+}
+
+#sec3 table input {
+	border: solid #cfcfcf 1px;
+	border-radius: 3px;
+	line-height: 40px;
+	font-weight: normal;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#sec3 table input.result {
+	color: #ff6200;
+}
+
+
+#sec4{
+	height: 625px;
+	overflow: hidden;
+	padding-top: 80px;
+	text-align: center;
+	background: url(../../upload/images/pc/tfy2/4.jpg) top center no-repeat;
+}
+
+#sec4 h1{
+	color: #000;
+}
+
+#sec4 .span1{
+	font-weight: bold;
+	line-height: 2.5em;
+}
+
+#sec5{
+	height: 78px;
+	overflow: hidden;
+	background-color: #0d1726;
+	text-align: left;
+	line-height: 78px;
+	position: fixed;
+	bottom: 1px;
+	z-index: 999;
+	width: 100%;
+}
+
+#sec5 a{
+	color: #fff;
+	background-color: #ff6200;
+	border-radius: 3px;
+	padding: 6px 20px;
+	text-decoration: none;
+}
+
+#sec6{
+	height: 641px;
+	overflow: hidden;
+	background: url(../../upload/images/pc/tfy2/5.jpg) top center no-repeat;
+}
+
+
+#sec7 .container{
+	line-height: 3em;
+	font-size: 14px !important;
+	color: #8b8b8b;
+}
+
+#sec7 a{
+	color: #8b8b8b;
+	text-decoration: none;
+}
+
+#sec7 a:hover, #sec7 a:active {
+	color: #ff6200;
+	text-decoration: none;
+}
+
+
+.b{
+	font-weight: bold;
+}

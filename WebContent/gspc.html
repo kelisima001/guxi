@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>港盛财富</title>
+<meta charset="utf-8" />
+<meta name="author" content="孙新-xs06974@163.com" />
+<meta name="description" content="港盛财富" />
+<meta name="keywords" content="港盛财富" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<link rel="icon" href="/upload/images/logo.ico" type="image/x-icon" />
+<style>
+html, body {
+	background-color: #0d57bf;
+}
+#container {
+	width: 1200px !important;
+	background-color: #0d57bf;
+}
+#sec1{
+	background: url(upload/images/gangsheng/pc/1.jpg) top center no-repeat;
+	height: 888px;
+	overflow: hidden;
+}
+
+#sec7 {
+	background: url(upload/images/gangsheng/pc/8.jpg) bottom center no-repeat;
+	height: 1456px;
+	overflow: hidden;
+}
+
+.formBtn {
+	width: auto;
+	position: fixed;
+	right: 160px;
+	bottom: 300px;
+	z-index: 999;
+	text-align: center;
+	color: #fff;
+	background-color: #e58c00;
+	border: solid #ff9c00 4px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bolder;
+	font-size: 2.5em;
+	padding: 15px;
+}
+
+.formBtn a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.case{
+	background: #fff;
+	color: #666;
+	padding: 10px 50px;
+	margin: 0 20px;
+	border-radius: 5px;
+}
+
+.case:hover {
+	background: #ffd800;
+	color: #0d52b3;
+}
+</style>
+</head>
+<body>
+<div id="sec1">
+	<div class="container center" >
+			
+	</div>
+</div>
+
+<div id="sec2">
+	<div class="container center">
+		<img src="upload/images/gangsheng/pc/2.jpg" />
+	</div>
+</div>
+
+<div id="sec3">
+	<div class="container center">
+		<img src="upload/images/gangsheng/pc/3.jpg" />
+	</div>
+</div>
+
+<div id="sec4">
+	<div class="container center">
+		<img src="upload/images/gangsheng/pc/4.jpg" />
+	</div>
+</div>
+
+<div id="sec5">
+	<div class="container center" style="text-align: center;">
+		<img src="upload/images/gangsheng/pc/5-0.png" /><br /><br />
+	</div>
+	<div class="container center" style="text-align: center;">
+		<button class="case" tid="p51">重疾类</button>
+		<button class="case" tid="p52">人寿类</button>
+	</div>
+	<div class="container center" id="p5">
+		<img id="p51" src="upload/images/gangsheng/pc/5-1.jpg" />
+		<img id="p52" src="upload/images/gangsheng/pc/5-2.jpg" style="display:none;"/>
+	</div>
+</div>
+
+<div id="sec6">
+	<div class="container center">
+		<img src="upload/images/gangsheng/pc/6.jpg" />
+	</div>
+</div>
+
+<div id="sec7">
+	<div class="container center">
+		<img src="upload/images/gangsheng/pc/7.jpg" />
+	</div>
+</div>
+<div class="formBtn">
+<a href="gspcreg.html">免费获取<br />计划书</a>
+</div>
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+$('.case').hover(function(){
+	var tid = $(this).attr('tid');
+	$('#p5 img').hide();
+	
+	$('#' + tid).show();
+});
+
+$('#btn').click(function(){
+	var name = $('#name').val();
+	var mobile = $('#mobile').val();
+	var email = $('#email').val();
+	
+	if(name=='') {
+		alert('请输入您的姓名');
+		return;
+	}
+	
+
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入您的手机号码');
+		return;
+	}
+	
+	if(email=='') {
+		alert('请输入您的邮箱');
+		return;
+	}
+	
+	$.ajax({
+		url: 'userInfo/add',
+		type: 'post',
+		data: {'name': name, 'mobile': mobile, 'email': email},
+		success: function(){
+			alert('提交成功, 请保持手机畅通, 工作人员会联系您.')
+			$('#name').val('');
+			$('#mobile').val('');
+			$('#email').val('');
+		},
+		error: function(){
+			alert('操作失败, 请稍后重试');
+		}
+	})
+});
+
+
+$('#btnGetVerifyCode').click(function(){
+	var that = $(this);
+	var mobile = $('#mobile').val();
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入正确的手机号码');
+		return;
+	}
+	
+	$.ajax({
+		url: 'sendVerifyCode?mobile=' + mobile,
+		success: function() {
+			$(that).attr('disabled', true);
+			var count = 59;
+			var timer = setInterval(function(){
+				$(that).text(count);
+				count--;
+				if(count<=0) {
+					$(that).attr('disabled', false);
+					$(that).text('发送验证码');
+					clearInterval(timer);
+				}
+			}, 1000)
+		},
+		error: function(){
+			alert('获取验证码失败, 请稍后重试');
+		}
+	})
+});
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?567de9f5749d8724c4dab98ef93c426c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>
+
+
+

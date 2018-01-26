@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html; charset=utf-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="com.smart.web" />
+
+	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="2592000" />
+	<mvc:resources mapping="/static/**" location="/static/" cache-period="2592000" />
+	<mvc:resources mapping="/images/**" location="/images/" cache-period="2592000" />
+	<mvc:resources mapping="/images_m/**" location="/images_m/" cache-period="2592000" />
+	<mvc:resources mapping="/css/**" location="/css/" cache-period="2592000" />
+	<mvc:resources mapping="/style/**" location="/style/" cache-period="2592000" />
+	<mvc:resources mapping="/scripts/**" location="/scripts/" cache-period="2592000" />
+	<mvc:resources mapping="/js/**" location="/js/" cache-period="2592000" />
+	<mvc:resources mapping="/template/**" location="/template/" cache-period="2592000" />
+	<mvc:resources mapping="/upload/**" location="/upload/" cache-period="2592000" />
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/" cache-period="2592000" />
+	<mvc:resources mapping="/ckeditor/**" location="/ckeditor/" cache-period="2592000" />
+	<mvc:resources mapping="/ckfinder/**" location="/ckfinder/" cache-period="2592000" />
+	<mvc:resources mapping="/*.html" location="/" cache-period="2592000" />
+	<mvc:resources mapping="/*.jsp" location="/" cache-period="2592000" />
+	<mvc:resources mapping="/*.jpg" location="/" cache-period="2592000" />
+	<mvc:resources mapping="/*.css" location="/" cache-period="2592000" />
+	<mvc:resources mapping="/*.png" location="/" cache-period="2592000" />
+	<mvc:resources mapping="/*.ico" location="/" cache-period="2592000" />
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
+	<cache:annotation-driven cache-manager="cacheManager" proxy-target-class="false" />
+	
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="spuCache" />
+			</set>
+		</property>
+	</bean>
+	
+	<!--bean class="com.smart.web.exception.SmartWebExceptionResolver" /-->
+</beans>

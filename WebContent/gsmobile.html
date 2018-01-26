@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>港盛财富</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="港盛财富" />
+<meta name="keywords" content="港盛财富" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<link rel="icon" href="/upload/images/logo.ico" type="image/x-icon" />
+<style>
+body{
+	background-color: #0d57bf;
+}
+img{
+	width: 100%; 
+	height: auto;
+}
+
+#form{
+	background: url(upload/images/mobile/6.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 10px 50px;
+	text-align: center;
+}
+
+#form input{
+	margin: 20px 0;
+}
+.myBtn{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    display: block;
+    font-size: 1.2em;
+}
+
+.myBtn:active, .myBtn:hover, .myBtn:visited{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    display: block;
+    text-decoration: none;
+}
+
+.myBtn1{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 50%; 
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.myBtn1:active, .myBtn1:hover, .myBtn1:visited{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    text-decoration: none;
+}
+
+.myContainer{
+	padding-bottom: 3px;
+}
+.myContainer .col-xs-6{
+	padding: 0 30px;
+}
+
+table {
+	width: 100%;
+	font-weight: bold;
+}
+
+table td{
+	line-height: 60px;
+	padding: 0 10px;
+}
+
+table input {
+	border: solid #cfcfcf 1px;
+	border-radius: 3px;
+	line-height: 40px;
+}
+
+.formBtn {
+	width: auto;
+	position: fixed;
+	right: 5px;
+	bottom: 200px;
+	z-index: 999;
+	text-align: center;
+	color: #fff;
+	background-color: #e58c00;
+	border: solid #ff9c00 4px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bolder;
+	font-size: 1.6em;
+	padding: 5px;
+}
+
+.formBtn a{
+	text-decoration: none;
+	color: #fff;
+}
+.center {
+	text-align: center;
+}
+
+.case{
+	background: #fff;
+	color: #666;
+	padding: 5px 30px;
+	margin: 0 10px;
+	border-radius: 5px;
+}
+
+.case:hover {
+	background: #ffd800;
+	color: #0d52b3;
+}
+</style>
+</head>
+<body>
+<img src="upload/images/gangsheng/m/1.jpg" />
+<img src="upload/images/gangsheng/m/2.jpg" />
+<img src="upload/images/gangsheng/m/3.jpg" />
+<img src="upload/images/gangsheng/m/4.jpg" />
+<img src="upload/images/gangsheng/m/5-0.jpg" />
+<div class="center" style="text-align: center;">
+	<button class="case" tid="p51">重疾类</button>
+	<button class="case" tid="p52">人寿类</button>
+</div>
+<div class="center" id="p5">
+	<img id="p51" src="upload/images/gangsheng/m/5-1.jpg" />
+	<img id="p52" src="upload/images/gangsheng/m/5-2.jpg" style="display:none;"/>
+</div>
+<img src="upload/images/gangsheng/m/6.jpg" />
+<img src="upload/images/gangsheng/m/7.jpg" />
+
+<div class="formBtn">
+<a href="gsmobilereg.html">免费获取<br />计划书</a>
+</div>
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+$('.case').hover(function(){
+	var tid = $(this).attr('tid');
+	$('#p5 img').hide();
+	
+	$('#' + tid).show();
+});
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?567de9f5749d8724c4dab98ef93c426c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

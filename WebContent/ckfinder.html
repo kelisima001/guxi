@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>上传目录资源管理器</title>
+<style>
+.message_content{
+	display: none !important;
+}
+
+.tool_panel {
+	display:none !important;
+}
+
+#sidebar_container .tool_panel{
+	display:none !important;
+}
+</style>
+</head>
+<body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script src="ckfinder/ckfinder.js"></script>
+<script type="text/javascript">  
+//var finder = new CKFinder();  
+//finder.basePath = 'c:/liangzi/';  
+//finder.create();
+   
+var finder = new CKFinder();
+// The path for the installation of CKFinder (default = "/ckfinder/").
+//finder.basePath = './ckfinder/';
+// The default height is 400.
+finder.disableHelpButton = true;
+finder.height = 800;
+// Change the skin to bootstrap.
+finder.skin = 'bootstrap';
+// Create CKFinder instance.
+finder.create();
+	
+</script>  
+</body>
+</html>

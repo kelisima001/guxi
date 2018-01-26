@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>港盛财富</title>
+<meta charset="utf-8" />
+<meta name="author" content="孙新-xs06974@163.com" />
+<meta name="description" content="港盛财富" />
+<meta name="keywords" content="港盛财富" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<link rel="icon" href="/upload/images/logo.ico" type="image/x-icon" />
+<style>
+html, body {
+	background-color: #0d57bf;
+}
+#container {
+	width: 1200px !important;
+	background-color: #0d57bf;
+}
+#sec1{
+	background: url(upload/images/gangsheng/pc/regbg.jpg) bottom center no-repeat;
+	height: 1456px;
+	overflow: hidden;
+}
+
+input {
+	background: #fff url(upload/images/gangsheng/star.png) right center no-repeat;
+	border-radius: 5px;
+	color: #666;
+	border: none;
+	padding: 10px 20px;
+	margin: 15px 0;
+	font-size: 2em;	
+	width: 500px;
+}
+
+
+select {
+	border-radius: 5px;
+	color: #666;
+	padding-left: 10px;
+	margin: 15px 0;
+	font-size: 2em;	
+	width: 500px !important;
+	height: 62px;
+	line-height: 62px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button{
+	color: #000;
+	background-color: #f9c80b;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin: 15px 0;
+	font-size: 2em;	
+	width: 500px;
+	font-weight: bold;
+}
+
+.footer {
+	margin-top: 200px;
+	color: #96b2da;
+	padding: 10px 20px;
+	background-color: #155fc7;
+	width: 500px;
+	font-size: 1em;
+}
+</style>
+</head>
+<body>
+<div id="sec1">
+	<div class="container" style="text-align: center">
+		<br><br><br>
+		<img src="upload/images/gangsheng/logo.png" />
+		<br><br><br><br>
+		<div style="font-weight: bold; font-size: 3em; color: #fff600;">免费获取</div>
+		<div style="color: #fff; font-size: 2.2em;">一份属于您的专属计划书</div>
+		<div>
+			<input id="name" placeholder="姓名:" /><br>
+			<input id="mobile" placeholder="手机:" /><br>
+			<select class="" id="age">
+				<option value="">被保人年龄</option>
+				<option value="0-18">0-18岁</option>
+				<option value="18-50">18-50岁</option>
+				<option value=">50">50岁以上</option>
+			</select><br>
+			<select class="" id="budget">
+				<option value="">投保预算</option>
+				<option value="<2000">2000美元/年以内</option>
+                <option value="2000-5000">2000-5000美元/年</option>
+                <option value="5000-10000">5000-10000美元/年</option>
+                <option value="10000-100000">10000-100000美元/年</option>
+                <option value="100000+">100000美元/年以上</option>
+			</select><br>
+			<select class="" id="type">
+				<option value="">保险类型</option>
+				<option value="储蓄险">储蓄险</option>
+				<option value="重疾险">重疾险</option>
+                <option value="高端医疗险">高端医疗险</option>
+                <option value="万用寿险">万用寿险</option>
+			</select><br>
+			
+			<button id="btn">点击获取</button><br />
+			
+			<label class="footer">版权所有: 仙桃市蚂蚁夺宝网络科技有限公司</label>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+
+
+$('#btn').click(function(){
+	var name = $('#name').val();
+	var mobile = $('#mobile').val();
+	var age = $('#age').val();
+	var budget = $('#budget').val();
+	var type = $('#type').val();
+	
+	if(name=='') {
+		alert('请输入您的姓名');
+		return;
+	}
+	
+
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入您的手机号码');
+		return;
+	}
+	
+	if(age=='') {
+		alert('请选择被保人年龄');
+		return;
+	}
+	
+	if(budget=='') {
+		alert('请选择投保预算');
+		return;
+	}
+	
+	if(type=='') {
+		alert('请选择保险类型');
+		return;
+	}
+	
+	$.ajax({
+		url: 'userInfo/add',
+		type: 'post',
+		data: {'name': name, 'mobile': mobile, 'channel': document.location.href, 'detail': '年龄:' + age + ', 预算:' + budget + ', 类型:' + type},
+		success: function(){
+			alert('提交成功, 请保持手机畅通, 工作人员会联系您.')
+			$('#name').val('');
+			$('#mobile').val('');
+			$('#age').val('');
+			$('#budget').val('');
+			$('#type').val('');
+		},
+		error: function(){
+			alert('操作失败, 请稍后重试');
+		}
+	})
+});
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?567de9f5749d8724c4dab98ef93c426c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>
+

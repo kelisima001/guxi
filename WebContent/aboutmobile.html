@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TFY FOREX</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="TFY Forex" />
+<meta name="keywords" content="TFY Forex" />
+<link rel="stylesheet" href="resources/css/bootstrap.css" />
+<link rel="icon" href="/upload/images/logo.ico" type="image/x-icon" />
+<style>
+body{
+	background-color: #0d1727;
+}
+img{
+	width: 100%; 
+	height: auto;
+}
+
+#form{
+	background: url(upload/images/mobile/6.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 10px 50px;
+	text-align: center;
+}
+
+#form input{
+	margin: 20px 0;
+}
+.myBtn{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    display: block;
+    font-size: 1.2em;
+}
+
+.myBtn:active, .myBtn:hover, .myBtn:visited{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    display: block;
+    text-decoration: none;
+}
+
+.myBtn1{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 50%; 
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.myBtn1:active, .myBtn1:hover, .myBtn1:visited{
+    color: #fff;
+    background-color: #e7600c;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 100%; 
+    text-decoration: none;
+}
+
+.myContainer{
+	padding-bottom: 3px;
+}
+.myContainer .col-xs-6{
+	padding: 0 30px;
+}
+
+table {
+	width: 100%;
+	font-weight: bold;
+}
+
+table td{
+	line-height: 60px;
+	padding: 0 10px;
+}
+
+table input {
+	border: solid #cfcfcf 1px;
+	border-radius: 3px;
+	line-height: 40px;
+}
+</style>
+</head>
+<body>
+
+<img src="upload/images/mobile/tfy2/1.jpg" />
+<img src="upload/images/mobile/about/about1.jpg" />
+<img src="upload/images/mobile/about/about2.jpg" />
+<br /><br /><br /><br /><br />
+<div class="myContainer" style="width:100%; position: fixed; bottom: 0px; z-index: 999;background-color: #0d1727; text-align: center;">
+	<img src="upload/images/mobile/tfy2/6.jpg" />
+	<div class="row">
+		<div class="col-xs-6">
+		<a href="mobile3reg.html" id="btn2" class="myBtn">免费体验</a>
+		</div>
+		<div class="col-xs-6">
+		<a href="javascript:;" id="btn3" class="myBtn">咨询客服</a>
+		</div>
+	</div>
+</div>
+</body>
+<script src="resources/js/jquery-2.1.4.js"></script>
+<script>
+$('#btn').click(function(){
+	var name = $('#name').val();
+	var mobile = $('#mobile').val();
+	var email = $('#email').val();
+	
+	if(name=='') {
+		alert('请输入您的姓名');
+		return;
+	}
+	
+	if(mobile=='' || !/\d11/.test(mobile)) {
+		alert('请输入您的手机号码');
+		return;
+	}
+	
+	if(email=='') {
+		alert('请输入您的邮箱');
+		return;
+	}
+	
+	$.ajax({
+		url: 'userInfo/add',
+		type: 'post',
+		data: {'name': name, 'mobile': mobile, 'email': email},
+		success: function(){
+			alert('提交成功, 请保持手机畅通, 工作人员会联系您.');
+			$('#name').val('');
+			$('#mobile').val('');
+			$('#email').val('');
+		},
+		error: function(){
+			alert('操作失败, 请稍后重试');
+		}
+	})
+});
+
+$('#a').bind('input', function () {
+    var num = Number($(this).val());
+    if(!isNaN(num)) {
+        //$('#errtips1').removeClass('show');
+        if(num == 0){
+            $('#b').val('0');
+            $('#c').val('0');
+        }else {
+            $('#b').val((num/481.26).toFixed(3));
+            $('#c').val((num*9355/2406.3).toFixed(3));
+        }
+    }else{
+         //$('#errtips1').addClass('show');
+    }
+});
+
+$('#btnGetVerifyCode').click(function(){
+	var that = $(this);
+	var mobile = $('#mobile').val();
+	if(mobile=='' || !/\d{11,11}/.test(mobile)) {
+		alert('请输入正确的手机号码');
+		return;
+	}
+	
+	$.ajax({
+		url: 'sendVerifyCode?mobile=' + mobile,
+		success: function() {
+			$(that).attr('disabled', true);
+			var count = 59;
+			setInterval(function(){
+				$(that).text(count);
+				count--;
+				if(count<=0) {
+					$(that).attr('disabled', false);
+					$(that).text('获取');
+				}
+			}, 1000)
+		},
+		error: function(){
+			alert('获取验证码失败, 请稍后重试');
+		}
+	})
+});
+
+
+$('.formItemWrapper').click(function(){
+	$(this).find('input').focus();
+});
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?62f3c3ef3b75268eb64da8b728220266";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

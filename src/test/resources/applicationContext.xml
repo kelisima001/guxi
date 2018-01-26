@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+
+    <util:properties id="hibernateProperties" location="classpath:hibernate.properties" />
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+    
+    <context:component-scan base-package="com.smart">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   
+    </context:component-scan>
+    
+    <bean class="com.smart.core.SpringContext" lazy-init="false" />
+    
+    <!--jdbc:embedded-database id="dataSource" type="H2" /-->
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver.className}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="4" />
+		<property name="maxWait" value="5000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
+	</bean>
+	
+    <bean id="namingStrategy" class="org.hibernate.cfg.ImprovedNamingStrategy" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:hibernateProperties-ref="hibernateProperties"
+		p:namingStrategy-ref="namingStrategy" p:packagesToScan="com.smart.**" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="hibernateJpaVendorAdapter"
+		p:jpaProperties-ref="hibernateProperties" p:packagesToScan="com.smart" />
+
+	<bean id="hibernateJpaVendorAdapter" class="com.smart.dao.DatabaseDetector"
+		p:dataSource-ref="dataSource" p:generateDdl="false" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="false" />
+	
+</beans>

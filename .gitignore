@@ -1,0 +1,7 @@
+ .classpath
+ .externalToolBuilders/
+ .project
+ .settings/
+ killsvn.bat.y
+ target/
+/target/

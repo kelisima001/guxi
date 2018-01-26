@@ -1,0 +1,15 @@
+<script src="resources/vendor/modernizr/modernizr.custom.js"></script>
+<script src="resources/vendor/matchMedia/matchMedia.js"></script>
+<script src="resources/vendor/jquery/dist/jquery.js"></script>
+<script src="resources/vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="resources/vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+<script src="resources/vendor/jquery.easing/js/jquery.easing.js"></script>
+<script src="resources/vendor/animo.js/animo.js"></script>
+<script src="resources/js/jquery.cookie.js"></script>
+<script src="resources/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="resources/vendor/screenfull/dist/screenfull.js"></script>
+<script src="resources/vendor/sparkline/index.js"></script>
+<script src="resources/vendor/moment/min/moment-with-locales.min.js"></script>
+<script src="resources/js/pnotify.custom.min.js"></script>
+<script src="resources/js/app.js"></script>
+<script src="resources/js/main.js"></script>
